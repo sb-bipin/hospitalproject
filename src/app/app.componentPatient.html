@@ -1,0 +1,28 @@
+<h3>Hello This is mine first angular project.</h3>
+@sb_bipin
+<br><br>
+<br><br>
+
+Name: <input type=" text" [(ngModel)]="patientObj.name" /> <br>
+Age: <input type="text" [(ngModel)]="patientObj.age" /> <br>
+<input type="button" value="ADD/UPDATE" (click)="Update()">
+
+<br>
+{{5+2}}<br>
+{{patientObj.name}}<br>
+{{patientObj.age}}
+
+<table style="border: 1px solid black; ">
+    <thead>
+        <td>Name</td>
+        <td>Age</td>
+
+    </thead>
+    <tr *ngFor="let pat of patientObjs ">
+        <td>{{pat.name}}</td>
+        <td>{{pat.age}} </td>
+        <td><a href="javascript:void(0)" (click)=" Edit(pat)">Edit</a></td>
+        <td><a href="javascript:void(0)" (click)=" Remove(pat)">Remove</a></td>
+
+    </tr>
+</table>
