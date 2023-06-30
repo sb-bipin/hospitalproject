@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Patient {\n  constructor() {\n    this.id = 0;\n    this.name = \"\";\n    this.age = 0;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
