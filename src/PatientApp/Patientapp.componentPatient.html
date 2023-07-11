@@ -1,28 +1,49 @@
-<h3>Hello This is mine first angular project.</h3>
-@sb_bipin
-<br><br>
-<br><br>
+<body>
+    <h3>Hello This is mine first angular project.</h3>
+    @sb_bipin
+    <br><br>
+    <br><br>
 
-Name: <input type=" text" [(ngModel)]="patientObj.name" /> <br>
-Age: <input type="text" [(ngModel)]="patientObj.age" /> <br>
-<input type="button" value="ADD/UPDATE" (click)="Update()">
+    <form [formGroup]="patientObj.formPatientGroup">
+        {{patientObj.formPatientGroup.valid}}
+        Name: <input formControlName="patientnameControl" type=" text" [(ngModel)]="patientObj.name" /> <br>
+        <span [hidden]="!(patientObj.formPatientGroup.controls['patientnameControl'].hasError('required'))">Name is
+            required</span><br>
+        Code: <input formControlName="patientcodeControl" type="text" [(ngModel)]="patientObj.code" /> <br>
+        <span [hidden]="!(patientObj.formPatientGroup.controls['patientcodeControl'].hasError('required'))">Code is
+            required</span><br>
+        <span
+            [hidden]="!(patientObj.formPatientGroup.controls['patientcodeControl'].hasError('pattern'))">A1001,B!004,C1005</span><br>
+        Age: <input [ngModelOptions]="{standalone:true}" type="text" [(ngModel)]="patientObj.age" /> <br>
 
-<br>
-{{5+2-3}}<br>
-{{patientObj.name}}<br>
-{{patientObj.age}}
+        <input [disabled]="!(patientObj.formPatientGroup.valid)" type="button" value="ADD/UPDATE" (click)="Update()">
 
-<table style="border: 1px solid black; ">
-    <thead>
-        <td>Name</td>
-        <td>Age</td>
+    </form>
 
-    </thead>
-    <tr *ngFor="let pat of patientObjs ">
-        <td>{{pat.name}}</td>
-        <td>{{pat.age}} </td>
-        <td><a href="javascript:void(0)" (click)=" Edit(pat)">Edit</a></td>
-        <td><a href="javascript:void(0)" (click)=" Remove(pat)">Remove</a></td>
 
-    </tr>
-</table>
+    <br>
+    {{5+2-3}}<br>
+    {{patientObj.name}}<br>
+    {{patientObj.age}}
+
+
+
+    <table class="table table-bordered border-primary" style="width:50vh;">
+        <thead>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Code</td>
+
+        </thead>
+        <tr *ngFor="let pat of patientObjs ">
+            <td>{{pat.name}}</td>
+            <td>{{pat.age}} </td>
+            <td>{{pat.code}} </td>
+
+            <td><a href="javascript:void(0)" (click)=" Edit(pat)">Edit</a></td>
+            <td><a href="javascript:void(0)" (click)=" Remove(pat)">Remove</a></td>
+
+        </tr>
+    </table>
+
+</body>
