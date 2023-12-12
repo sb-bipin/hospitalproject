@@ -1,17 +1,27 @@
 import { Component } from '@angular/core';
 import { Patient } from './Patientapp.model';
 import { CommonModule } from '@angular/common';
+import { BaseLogger, LoggerEmail } from 'src/common/logger';
 
 @Component({
   templateUrl: './Patientapp.componentPatient.html',
 
 })
 export class PatientComponent {
+
+  constructor(public log: BaseLogger) {
+
+  }
+
+
   patientObj: Patient = new Patient();
   patientObjs: Array<Patient> = new Array<Patient>();
 
   Update() {
     if (this.patientObj.id == 0) {
+      this.log.Log("Error in patient component.. ");
+
+
       //new patient
       this.patientObj.id = this.patientObjs.length + 1;
       this.patientObjs.push(this.patientObj);

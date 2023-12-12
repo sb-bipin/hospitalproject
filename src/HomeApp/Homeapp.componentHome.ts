@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Patient } from '../PatientApp/Patientapp.model';
+import { BaseLogger, LoggerEmail } from 'src/common/logger';
 
 @Component({
     selector: 'patient-ui',
@@ -7,6 +8,11 @@ import { Patient } from '../PatientApp/Patientapp.model';
     styleUrls: ['./app.component.css']
 })
 export class HomeComponent {
+    constructor(public log: BaseLogger) {
+        log.Log("Error in homepage component.. ");
+
+    }
+
     patientObj: Patient = new Patient();
     patientObjs: Array<Patient> = new Array<Patient>();
 

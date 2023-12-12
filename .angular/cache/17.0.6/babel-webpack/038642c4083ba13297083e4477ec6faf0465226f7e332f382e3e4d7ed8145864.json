@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Logger {\n  log(message) {\n    console.log(message);\n  }\n}\nexport class LoggerEmail {\n  log(message) {\n    console.log(\"Log to console\" + message);\n    console.log(\"Send email\" + message);\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
