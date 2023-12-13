@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Patient } from './Patientapp.model';
 import { CommonModule } from '@angular/common';
 import { BaseLogger, LoggerEmail } from 'src/common/logger';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   templateUrl: './Patientapp.componentPatient.html',
@@ -9,17 +10,42 @@ import { BaseLogger, LoggerEmail } from 'src/common/logger';
 })
 export class PatientComponent {
 
-  constructor(public log: BaseLogger) {
-
-  }
-
 
   patientObj: Patient = new Patient();
   patientObjs: Array<Patient> = new Array<Patient>();
 
+  constructor(public http: HttpClient) {
+
+  }
+
+
+  Submit() {
+    var patdto: any = {};
+    patdto.code = this.patientObj.code;
+    patdto.name = this.patientObj.name;
+    patdto.age = this.patientObj.age;
+
+    var observbl = this.http.post("https://localhost:44301/api/patient"
+      , patdto);
+
+    observbl.subscribe(res => this.success(res),
+      res => this.error(res));
+
+  }
+  success(res) {
+    alert("success");
+  }
+  error(res) {
+    console.log(res);
+  }
+  // constructor(public log: BaseLogger) {
+
+  // }
+
+
   Update() {
     if (this.patientObj.id == 0) {
-      this.log.Log("Error in patient component.. ");
+      // this.log.Log("Error in patient component.. ");
 
 
       //new patient

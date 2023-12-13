@@ -16,7 +16,7 @@
             [hidden]="!(patientObj.formPatientGroup.controls['patientcodeControl'].hasError('pattern'))">A1001,B!004,C1005</span><br>
         Age: <input [ngModelOptions]="{standalone:true}" type="text" [(ngModel)]="patientObj.age" /> <br>
 
-        <input [disabled]="!(patientObj.formPatientGroup.valid)" type="button" value="ADD/UPDATE" (click)="Update()">
+        <input [disabled]="!(patientObj.formPatientGroup.valid)" type="button" value="ADD/UPDATE" (click)="Submit()">
 
     </form>
 

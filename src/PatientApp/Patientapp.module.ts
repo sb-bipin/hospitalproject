@@ -6,6 +6,7 @@ import { PatientRoutingModule } from './Patientapp-routing.module';
 import { PatientComponent } from './Patientapp.componentPatient';
 import { CommonModule } from '@angular/common';
 import { BaseLogger, LoggerConsole, LoggerEmail } from 'src/common/logger';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,9 +14,10 @@ import { BaseLogger, LoggerConsole, LoggerEmail } from 'src/common/logger';
   ],
   imports: [
     PatientRoutingModule,
-    FormsModule, CommonModule,
-    ReactiveFormsModule
-
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     {

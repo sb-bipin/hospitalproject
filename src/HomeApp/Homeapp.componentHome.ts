@@ -8,10 +8,10 @@ import { BaseLogger, LoggerEmail } from 'src/common/logger';
     styleUrls: ['./app.component.css']
 })
 export class HomeComponent {
-    constructor(public log: BaseLogger) {
-        log.Log("Error in homepage component.. ");
+    // constructor(public log: BaseLogger) {
+    //     log.Log("Error in homepage component.. ");
 
-    }
+    // }
 
     patientObj: Patient = new Patient();
     patientObjs: Array<Patient> = new Array<Patient>();

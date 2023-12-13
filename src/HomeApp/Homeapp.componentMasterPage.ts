@@ -9,10 +9,10 @@ import { BaseLogger, LoggerEmail } from 'src/common/logger';
     styleUrls: ['./app.component.css']
 })
 export class MasterPageComponent {
-    constructor(public log: BaseLogger) {
-        log.Log("Error in masterpage component.. ");
+    // constructor(public log: BaseLogger) {
+    //     log.Log("Error in masterpage component.. ");
 
-    }
+    // }
 
 
 }
