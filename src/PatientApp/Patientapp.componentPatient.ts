@@ -3,6 +3,7 @@ import { Patient } from './Patientapp.model';
 import { CommonModule } from '@angular/common';
 import { BaseLogger, LoggerEmail } from 'src/common/logger';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './Patientapp.componentPatient.html',
@@ -25,18 +26,19 @@ export class PatientComponent {
     patdto.name = this.patientObj.name;
     patdto.age = this.patientObj.age;
 
-    var observbl = this.http.post("https://localhost:44301/api/patient"
+    var observbl = this.http.post("https://localhost:44301/api/values"
       , patdto);
 
     observbl.subscribe(res => this.success(res),
       res => this.error(res));
 
   }
+
   success(res) {
     alert("success");
   }
   error(res) {
-    console.log(res);
+    console.log("There is a n error:" + res);
   }
   // constructor(public log: BaseLogger) {
 
