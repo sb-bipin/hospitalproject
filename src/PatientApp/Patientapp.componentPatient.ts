@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BaseLogger, LoggerEmail } from 'src/common/logger';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { config } from 'src/common/Common-config';
 
 @Component({
   templateUrl: './Patientapp.componentPatient.html',
@@ -15,7 +16,8 @@ export class PatientComponent {
   patientObj: Patient = new Patient();
   patientObjs: Array<Patient> = new Array<Patient>();
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+    public config: config) {
 
   }
 
@@ -26,7 +28,7 @@ export class PatientComponent {
     patdto.name = this.patientObj.name;
     patdto.age = this.patientObj.age;
 
-    var observbl = this.http.post("https://localhost:44301/api/values"
+    var observbl = this.http.post(this.config.apiurl
       , patdto);
 
     observbl.subscribe(res => this.success(res),

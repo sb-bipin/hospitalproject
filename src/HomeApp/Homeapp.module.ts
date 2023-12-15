@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './Homeapp-routing.module';
 import { MasterPageComponent } from './Homeapp.componentMasterPage';
 import { HomeComponent } from './Homeapp.componentHome';
 import { BaseLogger, LoggerConsole, LoggerEmail } from 'src/common/logger';
+import { config } from 'src/common/Common-config';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,8 @@ import { BaseLogger, LoggerConsole, LoggerEmail } from 'src/common/logger';
     HomeRoutingModule,
     BrowserModule
   ],
-  providers: [{
-    provide: BaseLogger, useClass: LoggerConsole
-  }],
+
+  providers: [config],
   bootstrap: [MasterPageComponent]
 })
 export class AppModule { }
