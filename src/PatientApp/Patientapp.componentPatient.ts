@@ -37,7 +37,9 @@ export class PatientComponent {
   }
 
   success(res) {
-    alert("success");
+    this.patientObjs = res;
+    this.patientObj = new Patient();
+    // alert("success");
   }
   error(res) {
     console.log("There is a n error:" + res);
