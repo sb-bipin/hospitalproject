@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Patient } from './Patientapp.model';
 import { CommonModule } from '@angular/common';
 import { BaseLogger, LoggerEmail } from 'src/common/logger';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { config } from 'src/common/Common-config';
+import { AuthService } from 'src/app/auth-service.service';
 
 @Component({
   templateUrl: './Patientapp.componentPatient.html',
@@ -17,19 +18,38 @@ export class PatientComponent {
   patientObjs: Array<Patient> = new Array<Patient>();
 
   constructor(public http: HttpClient,
-    public config: config) {
+    public config: config,
+    private authService: AuthService) { }
 
-  }
 
+  // ngOnInit(): void {
+  //   // Ensure the authentication process is complete before accessing the token
+  //   setTimeout(() => {
+  //     const token = this.authService.getToken();
+  //     console.log('Token:', token);
+  //   }, 1000); // Adjust the delay as needed
+
+  // }
 
   Submit() {
+
+    const tokens = AuthService.tokenValue;
+
+    var headers_object = new HttpHeaders({
+      'Authorization': "Bearer " + tokens,
+    });
+
+    const httpOptions = {
+      headers: headers_object
+    };
+
+
     var patdto: any = {};
     patdto.code = this.patientObj.code;
     patdto.name = this.patientObj.name;
     patdto.age = this.patientObj.age;
 
-    var observbl = this.http.post(this.config.apiurl
-      , patdto);
+    var observbl = this.http.post(this.config.apiurl + 'Values', patdto, httpOptions);
 
     observbl.subscribe(res => this.success(res),
       res => this.error(res));
@@ -44,9 +64,7 @@ export class PatientComponent {
   error(res) {
     console.log("There is a n error:" + res);
   }
-  // constructor(public log: BaseLogger) {
 
-  // }
 
 
   Update() {
@@ -70,6 +88,7 @@ export class PatientComponent {
       });
     }
   }
+
   Edit(patSelected: Patient) {
     this.patientObj = new Patient();
     this.patientObj.name = patSelected.name;
@@ -101,9 +120,6 @@ export class PatientComponent {
   //     this.patientObjs[index].age = parseInt(prompt("Enter new age", this.patientObjs[index].age.toString())!);
   //   }
   // }
-
-
-
 
 
 

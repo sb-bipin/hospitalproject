@@ -1,0 +1,31 @@
+<body>
+    <h1>Login Here</h1>
+
+    <!-- <form [formGroup]="loginObj.formLoginGroup">
+        UserName: <input formControlName="loginnameControl" type=" text" [(ngModel)]="loginObj.username" /> <br>
+        Password: <input [ngModelOptions]="{standalone:true}" type="text" [(ngModel)]="loginObj.password" /> <br>
+
+        <input type="button" value="Check" (click)="login()">
+
+    </form> -->
+
+    <!-- login.component.html -->
+
+    <div>
+        <h2>Login</h2>
+        <form (ngSubmit)="login()">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" [(ngModel)]="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" [(ngModel)]="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    {{username}}
+
+</body>

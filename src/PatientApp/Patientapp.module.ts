@@ -7,6 +7,11 @@ import { PatientComponent } from './Patientapp.componentPatient';
 import { CommonModule } from '@angular/common';
 import { BaseLogger, LoggerConsole, LoggerEmail } from 'src/common/logger';
 import { HttpClientModule } from '@angular/common/http';
+import { config } from 'src/common/Common-config';
+import { AuthGuard } from 'src/common/common-authGuard';
+import { AuthService } from 'src/app/auth-service.service';
+
+
 
 @NgModule({
   declarations: [
@@ -19,10 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [
-    {
-      provide: BaseLogger, useClass: LoggerConsole
-    }
+  providers: [AuthService, AuthGuard, config,
+    { provide: BaseLogger, useClass: LoggerConsole },
+
   ],
   bootstrap: [PatientComponent]
 })

@@ -6,6 +6,8 @@ import { MasterPageComponent } from './Homeapp.componentMasterPage';
 import { HomeComponent } from './Homeapp.componentHome';
 import { BaseLogger, LoggerConsole, LoggerEmail } from 'src/common/logger';
 import { config } from 'src/common/Common-config';
+import { AuthService } from 'src/app/auth-service.service';
+import { AuthGuard } from 'src/common/common-authGuard';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import { config } from 'src/common/Common-config';
     BrowserModule
   ],
 
-  providers: [config],
+  providers: [config, AuthService, AuthGuard],
   bootstrap: [MasterPageComponent]
 })
 export class AppModule { }
